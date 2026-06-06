@@ -492,15 +492,42 @@ function toggleMobileMenu() {
   }
 }
 
-function submitForm() {
+async function submitForm() {
   const email = document.getElementById('f-email').value.trim();
   const type = document.getElementById('f-type').value;
   if (!email || !type) {
-    alert(lang === 'fr' ? 'Veuillez remplir au minimum votre email et votre profil.' : 'Please fill in at least your email and profile.');
+    alert(lang === 'fr'
+      ? 'Veuillez remplir au minimum votre email et votre profil.'
+      : 'Please fill in at least your email and profile.');
     return;
   }
-  document.getElementById('form-fields').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
+  const data = {
+    prenom: document.getElementById('f-prenom').value,
+    nom: document.getElementById('f-nom').value,
+    email: email,
+    organisation: document.getElementById('f-org').value,
+    profil: type,
+    message: document.getElementById('f-msg').value
+  };
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = lang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/TONCODE', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('form-fields').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = lang === 'fr' ? 'Erreur — réessayer' : 'Error — try again';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
