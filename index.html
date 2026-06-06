@@ -384,28 +384,28 @@ footer{background:var(--text);color:rgba(255,255,255,.7);padding:40px 5%;display
       </div>
     </div>
     <div class="contact-form">
-      <div id="form-fields">
+      <form id="form-fields" action="https://formspree.io/f/xjgdyggy" method="POST">
         <div class="form-grid-2">
           <div class="form-row">
             <label class="form-label" data-fr="Prénom" data-en="First name">Prénom</label>
-            <input class="form-input" type="text" id="f-prenom" placeholder="Kouamé">
+            <input class="form-input" type="text" id="f-prenom" name="prenom" placeholder="Kouamé">
           </div>
           <div class="form-row">
             <label class="form-label" data-fr="Nom" data-en="Last name">Nom</label>
-            <input class="form-input" type="text" id="f-nom" placeholder="Yao">
+            <input class="form-input" type="text" id="f-nom" name="nom" placeholder="Yao">
           </div>
         </div>
         <div class="form-row">
           <label class="form-label">Email</label>
-          <input class="form-input" type="email" id="f-email" placeholder="vous@entreprise.com">
+          <input class="form-input" type="email" id="f-email" name="email" placeholder="vous@entreprise.com">
         </div>
         <div class="form-row">
           <label class="form-label" data-fr="Organisation" data-en="Organization">Organisation</label>
-          <input class="form-input" type="text" id="f-org" placeholder="Nom de votre entreprise">
+          <input class="form-input" type="text" id="f-org" name="organisation" placeholder="Nom de votre entreprise">
         </div>
         <div class="form-row">
           <label class="form-label" data-fr="Vous êtes..." data-en="You are...">Vous êtes...</label>
-          <select class="form-select" id="f-type">
+          <select class="form-select" id="f-type" name="profil">
             <option value="" data-fr="Sélectionner votre profil" data-en="Select your profile">Sélectionner votre profil</option>
             <option value="exp" data-fr="PME exportatrice AOF (cajou, karité, cacao...)" data-en="West African exporting SME (cashew, shea, cocoa...)">PME exportatrice AOF</option>
             <option value="imp" data-fr="PME importatrice AOF (technologies canadiennes)" data-en="West African importing SME (Canadian technologies)">PME importatrice AOF</option>
@@ -416,11 +416,11 @@ footer{background:var(--text);color:rgba(255,255,255,.7);padding:40px 5%;display
         </div>
         <div class="form-row">
           <label class="form-label" data-fr="Message" data-en="Message">Message</label>
-          <textarea class="form-textarea" id="f-msg" placeholder="Décrivez brièvement votre besoin ou votre produit..."></textarea>
+          <textarea class="form-textarea" id="f-msg" name="message" placeholder="Décrivez brièvement votre besoin ou votre produit..."></textarea>
         </div>
         <button class="form-submit" onclick="submitForm()" data-fr="Envoyer ma demande →" data-en="Send my request →">Envoyer ma demande →</button>
         <div class="form-note" data-fr="Réponse sous 48h · Données protégées · Aucun spam" data-en="Response within 48h · Protected data · No spam">Réponse sous 48h · Données protégées · Aucun spam</div>
-      </div>
+      </form>
       <div class="success-msg" id="success-msg">
         <span class="success-icon">✓</span>
         <div class="success-text" data-fr="Demande envoyée avec succès !" data-en="Request sent successfully!">Demande envoyée avec succès !</div>
@@ -501,30 +501,26 @@ async function submitForm() {
       : 'Please fill in at least your email and profile.');
     return;
   }
-  const data = {
-    prenom: document.getElementById('f-prenom').value,
-    nom: document.getElementById('f-nom').value,
-    email: email,
-    organisation: document.getElementById('f-org').value,
-    profil: type,
-    message: document.getElementById('f-msg').value
-  };
+  const form = document.getElementById('form-fields');
+  const formData = new FormData(form);
   const btn = document.querySelector('.form-submit');
   btn.textContent = lang === 'fr' ? 'Envoi en cours...' : 'Sending...';
   btn.disabled = true;
   try {
     const res = await fetch('https://formspree.io/f/xjgdyggy', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
+      body: formData,
+      headers: {'Accept': 'application/json'}
     });
     if (res.ok) {
-      document.getElementById('form-fields').style.display = 'none';
+      form.style.display = 'none';
       document.getElementById('success-msg').style.display = 'block';
     } else {
+      const json = await res.json();
+      console.error('Formspree:', json);
       throw new Error();
     }
-  } catch {
+  } catch(e) {
     btn.textContent = lang === 'fr' ? 'Erreur — réessayer' : 'Error — try again';
     btn.disabled = false;
   }
