@@ -513,7 +513,7 @@ async function submitForm() {
   btn.textContent = lang === 'fr' ? 'Envoi en cours...' : 'Sending...';
   btn.disabled = true;
   try {
-    const res = await fetch('https://formspree.io/f/TONCODE', {
+    const res = await fetch('https://formspree.io/f/xjgdyggy', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
