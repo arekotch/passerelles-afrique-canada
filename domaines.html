@@ -697,15 +697,32 @@ function searchDomain() {
   loadingDiv.style.display = 'block';
   resultsDiv.innerHTML = '';
 
-  // Simulation d'un appel API (à remplacer par l'API ResellerClub)
-  setTimeout(() => {
+async function searchDomain() {
+  const raw = document.getElementById('domain-input').value.trim().toLowerCase();
+  if (!raw) return;
+
+  const base = raw.replace(/\.(com|africa|net|org|ca|sn|ci|cm)$/, '').replace(/[^a-z0-9-]/g, '');
+  if (!base) return;
+
+  const resultsDiv = document.getElementById('search-results');
+  const loadingDiv = document.getElementById('search-loading');
+
+  resultsDiv.style.display = 'none';
+  loadingDiv.style.display = 'block';
+  resultsDiv.innerHTML = '';
+
+  try {
+    const res = await fetch(`https://misty-snow-83e6.workers.dev/?domain=${base}`);
+    const data = await res.json();
+
     loadingDiv.style.display = 'none';
     resultsDiv.style.display = 'block';
 
     EXTENSIONS.forEach(ext => {
-      // Simulation : disponibilité aléatoire pour démonstration
-      // À remplacer par : fetch(`https://api.resellerclub.com/domains/available.json?...`)
-      const available = Math.random() > 0.35;
+      const fullDomain = base + ext;
+      const status = data[fullDomain]?.status;
+      const available = status === 'available';
+
       const item = document.createElement('div');
       item.className = 'result-item ' + (available ? 'available' : 'unavailable');
 
@@ -715,14 +732,20 @@ function searchDomain() {
         : '';
 
       item.innerHTML = `
-        <span class="result-name">${base}${ext}</span>
+        <span class="result-name">${fullDomain}</span>
         <span class="result-price">${available ? price + '/an' : ''}</span>
         <span class="result-status">${available ? 'Disponible' : 'Pris'}</span>
         ${available ? `<button class="result-cta" onclick="${ctaOnclick}">Commander</button>` : ''}
       `;
       resultsDiv.appendChild(item);
     });
-  }, 900);
+
+  } catch(e) {
+    loadingDiv.style.display = 'none';
+    resultsDiv.innerHTML = '<p style="color:red;font-size:0.9rem">Erreur de connexion — réessayez dans quelques instants.</p>';
+    resultsDiv.style.display = 'block';
+  }
+}
 }
 
 // Recherche sur Entrée
