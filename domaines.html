@@ -712,7 +712,7 @@ async function searchDomain() {
   resultsDiv.innerHTML = '';
 
   try {
-    const res = await fetch(`https://misty-snow-83e6.workers.dev/?domain=${base}`);
+   const res = await fetch(`https://misty-snow-83e6.aremou-kotchoni.workers.dev/?domain=${base}`);
     const data = await res.json();
 
     loadingDiv.style.display = 'none';
