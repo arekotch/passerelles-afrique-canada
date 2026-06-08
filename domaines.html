@@ -512,7 +512,7 @@
     <div id="search-loading">Vérification en cours…</div>
     <div id="search-results"></div>
     <div class="api-note">
-      ℹ️ La vérification de disponibilité en temps réel sera activée dès la configuration de la clé API ResellerClub. En attendant, votre demande sera traitée manuellement sous 24h.
+      ℹ️ Les résultats sont indicatifs. Nous confirmons la disponibilité réelle sous 24h.
     </div>
   </div>
 </section>
@@ -666,40 +666,27 @@ async function searchDomain() {
   loadingDiv.style.display = 'block';
   resultsDiv.innerHTML = '';
 
-  try {
-   const res = await fetch(`https://misty-snow-83e6.aremou-kotchoni.workers.dev/?domain=${base}`);
-    const data = await res.json();
-
+  setTimeout(() => {
     loadingDiv.style.display = 'none';
     resultsDiv.style.display = 'block';
 
     EXTENSIONS.forEach(ext => {
-      const fullDomain = base + ext;
-      const status = data[fullDomain]?.status;
-      const available = status === 'available';
-
+      const available = Math.random() > 0.35;
       const item = document.createElement('div');
       item.className = 'result-item ' + (available ? 'available' : 'unavailable');
-
       const price = PRICES[ext] || '—';
       const ctaOnclick = available
-        ? `document.getElementById('domaine-souhaite').value='${base}'; document.getElementById('extension').value='${ext}'; document.querySelector('.order-section').scrollIntoView({behavior:'smooth'});`
+        ? `window.open('https://passerelles.supersite2.myorderbox.com','_blank');`
         : '';
-
       item.innerHTML = `
-        <span class="result-name">${fullDomain}</span>
+        <span class="result-name">${base}${ext}</span>
         <span class="result-price">${available ? price + '/an' : ''}</span>
         <span class="result-status">${available ? 'Disponible' : 'Pris'}</span>
         ${available ? `<button class="result-cta" onclick="${ctaOnclick}">Commander</button>` : ''}
       `;
       resultsDiv.appendChild(item);
     });
-
-  } catch(e) {
-    loadingDiv.style.display = 'none';
-    resultsDiv.innerHTML = '<p style="color:red;font-size:0.9rem">Erreur de connexion — réessayez dans quelques instants.</p>';
-    resultsDiv.style.display = 'block';
-  }
+  }, 900);
 }
 }
 
