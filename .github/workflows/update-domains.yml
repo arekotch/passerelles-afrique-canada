@@ -1,0 +1,92 @@
+name: Update Domain Availability
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # toutes les heures
+  workflow_dispatch:       # déclenchement manuel possible
+
+jobs:
+  update-domains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Fetch domain availability
+        env:
+          API_KEY: ${{ secrets.RESELLERCLUB_API_KEY }}
+          RESELLER_ID: "1328813"
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request
+          import json
+          import os
+          import time
+
+          API_KEY = os.environ["API_KEY"]
+          RESELLER_ID = os.environ["RESELLER_ID"]
+
+          # Extensions à vérifier
+          TLDS = ["africa", "ca", "com", "org", "io", "bj", "ci", "sn"]
+
+          # Domaines exemple à vérifier (tu peux personnaliser)
+          DOMAINS = [
+              "monentreprise",
+              "maboutique",
+              "commerce",
+              "export",
+              "import",
+              "trade",
+              "afrique",
+              "africa",
+          ]
+
+          results = []
+
+          for domain in DOMAINS:
+              for tld in TLDS:
+                  full_domain = f"{domain}.{tld}"
+                  try:
+                      url = (
+                          f"https://httpapi.com/api/domains/available.json"
+                          f"?auth-userid={RESELLER_ID}"
+                          f"&api-key={API_KEY}"
+                          f"&domain-name={domain}"
+                          f"&tlds={tld}"
+                      )
+                      req = urllib.request.Request(url)
+                      with urllib.request.urlopen(req, timeout=10) as resp:
+                          data = json.loads(resp.read().decode())
+                          status = data.get(full_domain, {}).get("status", "unknown")
+                          price = data.get(full_domain, {}).get("price", None)
+                          results.append({
+                              "domain": full_domain,
+                              "status": status,
+                              "price": price
+                          })
+                  except Exception as e:
+                      results.append({
+                          "domain": full_domain,
+                          "status": "error",
+                          "price": None
+                      })
+                  time.sleep(0.3)  # éviter rate limiting
+
+          output = {
+              "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+              "domains": results
+          }
+
+          with open("domains.json", "w") as f:
+              json.dump(output, f, indent=2, ensure_ascii=False)
+
+          print(f"✓ {len(results)} domaines vérifiés")
+          PYEOF
+
+      - name: Commit domains.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add domains.json
+          git diff --staged --quiet || git commit -m "chore: mise à jour disponibilité domaines [$(date -u '+%Y-%m-%d %H:%M')] UTC"
+          git push
