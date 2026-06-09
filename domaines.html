@@ -306,30 +306,27 @@ async function checkDomain() {
   // Construire la liste de domaines à vérifier
   const domains = TLDS.map(tld => `${base}.${tld}`);
 
-try {
-    const resp = await fetch(
-      `https://passerelles-afrique-canada.vercel.app/api/check-domain?domain=${base}`
-    );
+const resp = await fetch(
+  `https://passerelles-afrique-canada.vercel.app/api/check-domain?domain=${base}`
+);
 
-    if (!resp.ok) throw new Error('API error ' + resp.status);
-    const data = await resp.json();
-    const items = data.domains || [];
+if (!resp.ok) throw new Error('API error ' + resp.status);
+const data = await resp.json();
+const items = data.domains || [];
 
-    results.innerHTML = items.map(item => {
-      const available = item.available === true;
-      const statusClass = available ? 'available' : 'unavailable';
-      const statusText  = available ? '✅ Disponible' : '❌ Pris';
-      const cta = available
-        ? `<a class="result-cta" href="https://passerelles.supersite2.myorderbox.com" target="_blank">Commander</a>`
-        : '';
-      return `<div class="result-item ${statusClass}">
-        <span class="result-name">${item.domain}</span>
-        <span class="result-status">${statusText}</span>
-        ${cta}
-      </div>`;
-    }).join('');
-
-  } catch (err) {
+results.innerHTML = items.map(item => {
+  const available = item.available === true;
+  const statusClass = available ? 'available' : 'unavailable';
+  const statusText  = available ? '✅ Disponible' : '❌ Pris';
+  const cta = available
+    ? `<a class="result-cta" href="https://passerelles.supersite2.myorderbox.com" target="_blank">Commander</a>`
+    : '';
+  return `<div class="result-item ${statusClass}">
+    <span class="result-name">${item.domain}</span>
+    <span class="result-status">${statusText}</span>
+    ${cta}
+  </div>`;
+}).join(''); catch (err) {
     results.innerHTML = `<p style="color:red; margin-top:1rem;">Erreur de vérification. Veuillez réessayer.</p>`;
   } catch (err) {
     results.innerHTML = `<p style="color:red; margin-top:1rem;">Erreur de vérification. Veuillez réessayer.</p>`;
