@@ -503,8 +503,9 @@ function renderDomains(domains) {
   }
   grid.innerHTML = domains.map(d => {
     const available = d.status === 'available';
+    const unknown = d.status === 'error' || d.status === 'unknown';
     const statusClass = available ? 'available' : 'unavailable';
-    const statusText = available ? 'Disponible' : 'Pris';
+    const statusText = available ? 'Disponible' : unknown ? 'Vérification...' : 'Pris';
     const cta = available
       ? `<a class="result-cta" href="https://passerelles.supersite2.myorderbox.com" target="_blank">Commander</a>`
       : '';
@@ -520,7 +521,7 @@ function filterDomains() {
   const query = document.getElementById('searchInput').value.toLowerCase().trim();
   let filtered = allDomains;
   if (activeTLD !== 'all') filtered = filtered.filter(d => d.domain.endsWith('.' + activeTLD));
-  if (query) filtered = filtered.filter(d => d.domain.startsWith(query));
+  if (query) filtered = filtered.filter(d => d.domain.includes(query));
   renderDomains(filtered);
 }
 
