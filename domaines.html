@@ -29,7 +29,6 @@
     line-height: 1.6;
   }
 
-  /* ── NAV ── */
   nav {
     background: var(--vert-f);
     padding: 0 2rem;
@@ -58,7 +57,6 @@
   }
   .nav-links a:hover, .nav-links a.active { color: var(--or-clair); }
 
-  /* ── HERO ── */
   .hero {
     background: linear-gradient(135deg, var(--vert-f) 0%, var(--vert) 60%, #2d8f5a 100%);
     padding: 5rem 2rem 4rem;
@@ -101,7 +99,6 @@
     font-weight: 300;
   }
 
-  /* ── WIDGET RECHERCHE ── */
   .search-section {
     background: var(--blanc);
     border-bottom: 3px solid var(--or);
@@ -157,12 +154,24 @@
   }
   .search-bar button:hover { background: var(--vert-f); }
 
-  /* Résultats recherche */
-  #search-results {
-    margin-top: 1.8rem;
-    text-align: left;
-    display: none;
+  .tld-btn {
+    background: var(--gris);
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
   }
+  .tld-btn.active, .tld-btn:hover {
+    background: var(--vert);
+    color: var(--blanc);
+    border-color: var(--vert);
+  }
+
+  #search-results { margin-top: 1.5rem; text-align: left; }
+
   .result-item {
     display: flex;
     align-items: center;
@@ -172,16 +181,9 @@
     margin-bottom: 0.5rem;
     background: var(--gris);
     border-left: 4px solid transparent;
-    transition: all 0.2s;
   }
-  .result-item.available {
-    border-left-color: var(--vert);
-    background: #edf7f1;
-  }
-  .result-item.unavailable {
-    border-left-color: #ccc;
-    opacity: 0.6;
-  }
+  .result-item.available { border-left-color: var(--vert); background: #edf7f1; }
+  .result-item.unavailable { border-left-color: #ccc; opacity: 0.6; }
   .result-name { font-weight: 600; font-size: 0.97rem; }
   .result-status {
     font-size: 0.8rem;
@@ -189,14 +191,8 @@
     padding: 0.2rem 0.7rem;
     border-radius: 999px;
   }
-  .result-item.available .result-status {
-    background: var(--vert);
-    color: var(--blanc);
-  }
-  .result-item.unavailable .result-status {
-    background: #ccc;
-    color: #555;
-  }
+  .result-item.available .result-status { background: var(--vert); color: var(--blanc); }
+  .result-item.unavailable .result-status { background: #ccc; color: #555; }
   .result-price { font-size: 0.88rem; color: var(--doux); margin: 0 1rem; }
   .result-cta {
     background: var(--or);
@@ -209,40 +205,16 @@
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     transition: background 0.2s;
+    text-decoration: none;
   }
   .result-cta:hover { background: var(--vert); }
-  .result-item.unavailable .result-cta { display: none; }
 
-  #search-loading {
-    display: none;
-    text-align: center;
-    color: var(--doux);
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  /* Note API */
-  .api-note {
-    margin-top: 1rem;
-    font-size: 0.78rem;
-    color: var(--doux);
-    background: #fef9ee;
-    border: 1px solid #f0d078;
-    border-radius: 6px;
-    padding: 0.6rem 1rem;
-    text-align: left;
-  }
-
-  /* ── CATALOGUE ── */
   .catalogue-section {
     padding: 4rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
   }
-  .section-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
   .section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.9rem;
@@ -267,10 +239,7 @@
     position: relative;
     overflow: hidden;
   }
-  .tld-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-  }
+  .tld-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.13); }
   .tld-card::before {
     content: '';
     position: absolute;
@@ -287,23 +256,9 @@
     margin-bottom: 0.3rem;
   }
   .tld-card.featured .tld-ext { color: var(--or); }
-  .tld-desc {
-    font-size: 0.78rem;
-    color: var(--doux);
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  }
-  .tld-price {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--vert-f);
-  }
-  .tld-price span {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--doux);
-    display: block;
-  }
+  .tld-desc { font-size: 0.78rem; color: var(--doux); margin-bottom: 1rem; line-height: 1.4; }
+  .tld-price { font-size: 1.05rem; font-weight: 600; color: var(--vert-f); }
+  .tld-price span { font-size: 0.75rem; font-weight: 400; color: var(--doux); display: block; }
   .badge-pop {
     position: absolute;
     top: 0.6rem; right: 0.6rem;
@@ -316,21 +271,11 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-
-  .tld-coming {
-    background: var(--gris);
-    border: 2px dashed #d0ccc4;
-    box-shadow: none;
-  }
+  .tld-coming { background: var(--gris); border: 2px dashed #d0ccc4; box-shadow: none; }
   .tld-coming .tld-ext { color: #aaa; }
   .tld-coming .tld-price { color: #aaa; }
 
-  /* ── SERVICES SECTION ── */
-  .services-strip {
-    background: var(--vert-f);
-    color: var(--blanc);
-    padding: 3.5rem 2rem;
-  }
+  .services-strip { background: var(--vert-f); color: var(--blanc); padding: 3.5rem 2rem; }
   .services-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -345,11 +290,7 @@
     color: var(--or-clair);
     margin-bottom: 0.8rem;
   }
-  .services-text p {
-    color: rgba(255,255,255,0.78);
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
+  .services-text p { color: rgba(255,255,255,0.78); font-size: 0.92rem; line-height: 1.7; }
   .services-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -366,101 +307,12 @@
     align-items: flex-start;
     gap: 0.7rem;
   }
-  .services-list li::before {
-    content: '✓';
-    color: var(--or-clair);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-  }
+  .services-list li::before { content: '✓'; color: var(--or-clair); font-weight: 700; flex-shrink: 0; }
 
-  /* ── CTA COMMANDER ── */
-  .order-section {
-    padding: 4rem 2rem;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .order-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--vert-f);
-    margin-bottom: 0.6rem;
-  }
-  .order-section p {
-    color: var(--doux);
-    font-size: 0.93rem;
-    margin-bottom: 2rem;
-  }
-  .order-form {
-    background: var(--blanc);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    border: 1px solid #e8e4dc;
-    text-align: left;
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin-bottom: 1rem;
-  }
-  .form-group label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--vert-f);
-    letter-spacing: 0.03em;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 0.7rem 0.9rem;
-    border: 1.5px solid #ddd;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.92rem;
-    color: var(--texte);
-    background: var(--blanc);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--vert); }
-  .form-group textarea { resize: vertical; min-height: 80px; }
+  .order-section { padding: 4rem 2rem; max-width: 720px; margin: 0 auto; text-align: center; }
+  .order-section h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--vert-f); margin-bottom: 0.6rem; }
+  .order-section p { color: var(--doux); font-size: 0.93rem; margin-bottom: 2rem; }
 
-  .btn-submit {
-    width: 100%;
-    background: var(--vert);
-    color: var(--blanc);
-    border: none;
-    padding: 0.9rem;
-    border-radius: 7px;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    letter-spacing: 0.03em;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
-  }
-  .btn-submit:hover { background: var(--vert-f); }
-
-  .form-note {
-    font-size: 0.75rem;
-    color: var(--doux);
-    text-align: center;
-    margin-top: 1rem;
-  }
-
-  /* ── FOOTER ── */
   footer {
     background: var(--vert-f);
     color: rgba(255,255,255,0.6);
@@ -470,10 +322,8 @@
   }
   footer a { color: var(--or-clair); text-decoration: none; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
     .nav-links { display: none; }
-    .form-row { grid-template-columns: 1fr; }
     .services-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     .services-list { grid-template-columns: 1fr; }
     .tld-grid { grid-template-columns: repeat(2, 1fr); }
@@ -482,7 +332,7 @@
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">Passerelles Afrique‑Canada</a>
   <ul class="nav-links">
@@ -493,26 +343,25 @@
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-tag">Enregistrement de noms de domaine</div>
   <h1>Votre identité numérique,<br><span>ancrage africain</span></h1>
   <p>Enregistrez votre nom de domaine avec des extensions internationales et africaines. Démarches simples, tarifs transparents, support bilingue.</p>
 </section>
 
-<!-- ── WIDGET RECHERCHE ── -->
+<!-- WIDGET RECHERCHE -->
 <section id="domaines" class="search-section">
   <div class="search-inner">
     <h2>Vérifier la disponibilité</h2>
     <p>Entrez le nom souhaité — disponibilité mise à jour toutes les heures.</p>
 
-    <!-- Barre de recherche -->
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="monentreprise" autocomplete="off" oninput="filterDomains()">
+      <input type="text" id="searchInput" placeholder="monentreprise" autocomplete="off"
+             onkeydown="if(event.key==='Enter') filterDomains()">
       <button onclick="filterDomains()">🔍 Rechercher</button>
     </div>
 
-    <!-- Filtres TLD -->
     <div style="margin:16px 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
       <button class="tld-btn active" onclick="filterTLD('all',this)">Tous</button>
       <button class="tld-btn" onclick="filterTLD('africa',this)">.africa</button>
@@ -525,12 +374,109 @@
       <button class="tld-btn" onclick="filterTLD('sn',this)">.sn</button>
     </div>
 
-    <!-- Résultats -->
     <div id="search-results"></div>
     <p id="lastUpdate" style="font-size:0.8em; color:#888; margin-top:12px;"></p>
   </div>
 </section>
 
+<!-- CATALOGUE -->
+<section class="catalogue-section">
+  <div class="section-header">
+    <h2>Extensions disponibles</h2>
+    <p>Tarifs en dollars canadiens (CAD), par an. Renouvellement au même tarif.</p>
+  </div>
+  <div class="tld-grid">
+    <div class="tld-card featured">
+      <div class="badge-pop">Populaire</div>
+      <div class="tld-ext">.com</div>
+      <div class="tld-desc">La référence mondiale pour toute entreprise</div>
+      <div class="tld-price">14,99 $ CA<span>/ an · renouvellement 16,99 $</span></div>
+    </div>
+    <div class="tld-card featured">
+      <div class="badge-pop">Afrique</div>
+      <div class="tld-ext">.africa</div>
+      <div class="tld-desc">L'extension continent pour votre ancrage africain</div>
+      <div class="tld-price">24,99 $ CA<span>/ an · renouvellement 24,99 $</span></div>
+    </div>
+    <div class="tld-card">
+      <div class="tld-ext">.net</div>
+      <div class="tld-desc">Technologie, réseaux, services numériques</div>
+      <div class="tld-price">13,99 $ CA<span>/ an · renouvellement 15,99 $</span></div>
+    </div>
+    <div class="tld-card">
+      <div class="tld-ext">.org</div>
+      <div class="tld-desc">Organisations, associations, ONG</div>
+      <div class="tld-price">13,99 $ CA<span>/ an · renouvellement 15,99 $</span></div>
+    </div>
+    <div class="tld-card">
+      <div class="tld-ext">.ca</div>
+      <div class="tld-desc">Présence canadienne officielle</div>
+      <div class="tld-price">12,99 $ CA<span>/ an · renouvellement 14,99 $</span></div>
+    </div>
+    <div class="tld-card tld-coming">
+      <div class="tld-ext">.sn</div>
+      <div class="tld-desc">Sénégal — bientôt disponible</div>
+      <div class="tld-price">À venir</div>
+    </div>
+    <div class="tld-card tld-coming">
+      <div class="tld-ext">.ci</div>
+      <div class="tld-desc">Côte d'Ivoire — bientôt disponible</div>
+      <div class="tld-price">À venir</div>
+    </div>
+    <div class="tld-card tld-coming">
+      <div class="tld-ext">.cm</div>
+      <div class="tld-desc">Cameroun — bientôt disponible</div>
+      <div class="tld-price">À venir</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES INCLUS -->
+<section class="services-strip">
+  <div class="services-inner">
+    <div class="services-text">
+      <h2>Tout inclus dans votre domaine</h2>
+      <p>Chaque nom de domaine enregistré via Passerelles Afrique-Canada est accompagné d'un ensemble de services sans frais supplémentaires.</p>
+    </div>
+    <ul class="services-list">
+      <li>Protection WHOIS (confidentialité du titulaire)</li>
+      <li>Gestion DNS complète</li>
+      <li>Verrouillage anti-transfert</li>
+      <li>Redirection URL incluse</li>
+      <li>Support bilingue FR / EN</li>
+      <li>Renouvellement automatique optionnel</li>
+      <li>Transfert entrant gratuit</li>
+      <li>Tableau de bord simplifié</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA COMMANDER -->
+<section class="order-section">
+  <h2>Commander un domaine</h2>
+  <p>Commandez votre nom de domaine directement via notre boutique sécurisée.</p>
+  <div style="background:var(--blanc); border-radius:12px; padding:3rem 2rem; box-shadow:var(--shadow); border:1px solid #e8e4dc; text-align:center;">
+    <p style="font-size:1.05rem; color:var(--vert-f); margin-bottom:1.5rem;">
+      Recherchez et enregistrez votre domaine en quelques clics.
+    </p>
+    <a href="https://passerelles.supersite2.myorderbox.com" target="_blank"
+       style="display:inline-block; background:var(--vert); color:#fff;
+              padding:1rem 2.5rem; border-radius:8px; font-size:1rem;
+              font-weight:600; text-decoration:none; letter-spacing:0.03em;">
+      Accéder à la boutique →
+    </a>
+    <p style="font-size:0.78rem; color:var(--doux); margin-top:1rem;">
+      Paiement sécurisé · Activation immédiate · Support bilingue FR/EN
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Passerelles Afrique-Canada · <a href="mailto:info@passerelles.africa">info@passerelles.africa</a> · <a href="index.html">Accueil</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<!-- SCRIPT UNIQUE -->
 <script>
 let allDomains = [];
 let activeTLD = 'all';
@@ -545,27 +491,27 @@ async function loadDomains() {
     renderDomains(allDomains);
   } catch (e) {
     document.getElementById('search-results').innerHTML =
-      '<p style="color:red">Impossible de charger les domaines.</p>';
+      '<p style="color:red;margin-top:1rem;">Impossible de charger les domaines.</p>';
   }
 }
 
 function renderDomains(domains) {
   const grid = document.getElementById('search-results');
   if (domains.length === 0) {
-    grid.innerHTML = '<p style="color:#888">Aucun résultat.</p>';
+    grid.innerHTML = '<p style="color:#888; margin-top:1rem;">Aucun résultat.</p>';
     return;
   }
   grid.innerHTML = domains.map(d => {
     const available = d.status === 'available';
-    const badge = available
-      ? '<span style="color:green; font-weight:bold;">✅ Disponible</span>'
-      : '<span style="color:#999;">❌ Pris</span>';
-    const btn = available
-      ? `<a href="https://passerelles.supersite2.myorderbox.com" target="_blank"
-            style="margin-left:12px; font-size:0.85em;">Commander →</a>`
+    const statusClass = available ? 'available' : 'unavailable';
+    const statusText = available ? 'Disponible' : 'Pris';
+    const cta = available
+      ? `<a class="result-cta" href="https://passerelles.supersite2.myorderbox.com" target="_blank">Commander</a>`
       : '';
-    return `<div style="padding:8px 0; border-bottom:1px solid #eee;">
-      <strong>${d.domain}</strong> — ${badge}${btn}
+    return `<div class="result-item ${statusClass}">
+      <span class="result-name">${d.domain}</span>
+      <span class="result-status">${statusText}</span>
+      ${cta}
     </div>`;
   }).join('');
 }
@@ -586,185 +532,6 @@ function filterTLD(tld, btn) {
 }
 
 loadDomains();
-</script>
-
-<!-- ── CATALOGUE ── -->
-<section class="catalogue-section">
-  <div class="section-header">
-    <h2>Extensions disponibles</h2>
-    <p>Tarifs en dollars canadiens (CAD), par an. Renouvellement au même tarif.</p>
-  </div>
-
-  <div class="tld-grid">
-
-    <div class="tld-card featured">
-      <div class="badge-pop">Populaire</div>
-      <div class="tld-ext">.com</div>
-      <div class="tld-desc">La référence mondiale pour toute entreprise</div>
-      <div class="tld-price">14,99 $ CA<span>/ an · renouvellement 16,99 $</span></div>
-    </div>
-
-    <div class="tld-card featured">
-      <div class="badge-pop">Afrique</div>
-      <div class="tld-ext">.africa</div>
-      <div class="tld-desc">L'extension continent pour votre ancrage africain</div>
-      <div class="tld-price">24,99 $ CA<span>/ an · renouvellement 24,99 $</span></div>
-    </div>
-
-    <div class="tld-card">
-      <div class="tld-ext">.net</div>
-      <div class="tld-desc">Technologie, réseaux, services numériques</div>
-      <div class="tld-price">13,99 $ CA<span>/ an · renouvellement 15,99 $</span></div>
-    </div>
-
-    <div class="tld-card">
-      <div class="tld-ext">.org</div>
-      <div class="tld-desc">Organisations, associations, ONG</div>
-      <div class="tld-price">13,99 $ CA<span>/ an · renouvellement 15,99 $</span></div>
-    </div>
-
-    <div class="tld-card">
-      <div class="tld-ext">.ca</div>
-      <div class="tld-desc">Présence canadienne officielle</div>
-      <div class="tld-price">12,99 $ CA<span>/ an · renouvellement 14,99 $</span></div>
-    </div>
-
-    <div class="tld-card tld-coming">
-      <div class="tld-ext">.sn</div>
-      <div class="tld-desc">Sénégal — bientôt disponible</div>
-      <div class="tld-price">À venir</div>
-    </div>
-
-    <div class="tld-card tld-coming">
-      <div class="tld-ext">.ci</div>
-      <div class="tld-desc">Côte d'Ivoire — bientôt disponible</div>
-      <div class="tld-price">À venir</div>
-    </div>
-
-    <div class="tld-card tld-coming">
-      <div class="tld-ext">.cm</div>
-      <div class="tld-desc">Cameroun — bientôt disponible</div>
-      <div class="tld-price">À venir</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── SERVICES INCLUS ── -->
-<section class="services-strip">
-  <div class="services-inner">
-    <div class="services-text">
-      <h2>Tout inclus dans votre domaine</h2>
-      <p>Chaque nom de domaine enregistré via Passerelles Afrique-Canada est accompagné d'un ensemble de services sans frais supplémentaires.</p>
-    </div>
-    <ul class="services-list">
-      <li>Protection WHOIS (confidentialité du titulaire)</li>
-      <li>Gestion DNS complète</li>
-      <li>Verrouillage anti-transfert</li>
-      <li>Redirection URL incluse</li>
-      <li>Support bilingue FR / EN</li>
-      <li>Renouvellement automatique optionnel</li>
-      <li>Transfert entrant gratuit</li>
-      <li>Tableau de bord simplifié</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ── FORMULAIRE COMMANDE ── -->
-<section class="order-section">
-  <h2>Commander un domaine</h2>
-  <p>Commandez votre nom de domaine directement via notre boutique sécurisée.</p>
-  <div class="order-form" style="text-align:center; padding: 3rem 2rem;">
-    <p style="font-size:1.05rem; color:var(--vert-f); margin-bottom:1.5rem;">
-      Recherchez et enregistrez votre domaine en quelques clics.
-    </p>
-    <a href="https://passerelles.supersite2.myorderbox.com" target="_blank"
-       style="display:inline-block; background:var(--vert); color:#fff;
-              padding:1rem 2.5rem; border-radius:8px; font-size:1rem;
-              font-weight:600; text-decoration:none; letter-spacing:0.03em;">
-      Accéder à la boutique →
-    </a>
-    <p style="font-size:0.78rem; color:var(--doux); margin-top:1rem;">
-      Paiement sécurisé · Activation immédiate · Support bilingue FR/EN
-    </p>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <p>© 2025 Passerelles Afrique-Canada · <a href="mailto:info@passerelles.africa">info@passerelles.africa</a> · <a href="index.html">Accueil</a> · <a href="contact.html">Contact</a></p>
-</footer>
-
-<script>
-// ── Widget de recherche (mode démonstration en attendant la clé API ResellerClub) ──
-const EXTENSIONS = ['.com', '.africa', '.net', '.org', '.ca'];
-
-// Tarifs provisoires (CAD) — à mettre à jour avec les marges définitives
-const PRICES = {
-  '.com':    '14,99 $ CA',
-  '.africa': '24,99 $ CA',
-  '.net':    '13,99 $ CA',
-  '.org':    '13,99 $ CA',
-  '.ca':     '12,99 $ CA',
-};
-
-function searchDomain() {
-  const raw = document.getElementById('domain-input').value.trim().toLowerCase();
-  if (!raw) return;
-
-  // Nettoyer l'entrée (retirer extension si saisie)
-  const base = raw.replace(/\.(com|africa|net|org|ca|sn|ci|cm)$/, '').replace(/[^a-z0-9-]/g, '');
-  if (!base) return;
-
-  const resultsDiv = document.getElementById('search-results');
-  const loadingDiv = document.getElementById('search-loading');
-
-  resultsDiv.style.display = 'none';
-  loadingDiv.style.display = 'block';
-  resultsDiv.innerHTML = '';
-
-async function searchDomain() {
-  const raw = document.getElementById('domain-input').value.trim().toLowerCase();
-  if (!raw) return;
-
-  const base = raw.replace(/\.(com|africa|net|org|ca|sn|ci|cm)$/, '').replace(/[^a-z0-9-]/g, '');
-  if (!base) return;
-
-  const resultsDiv = document.getElementById('search-results');
-  const loadingDiv = document.getElementById('search-loading');
-
-  resultsDiv.style.display = 'none';
-  loadingDiv.style.display = 'block';
-  resultsDiv.innerHTML = '';
-
-  setTimeout(() => {
-    loadingDiv.style.display = 'none';
-    resultsDiv.style.display = 'block';
-
-    EXTENSIONS.forEach(ext => {
-      const available = Math.random() > 0.35;
-      const item = document.createElement('div');
-      item.className = 'result-item ' + (available ? 'available' : 'unavailable');
-      const price = PRICES[ext] || '—';
-      const ctaOnclick = available
-        ? `window.open('https://passerelles.supersite2.myorderbox.com','_blank');`
-        : '';
-      item.innerHTML = `
-        <span class="result-name">${base}${ext}</span>
-        <span class="result-price">${available ? price + '/an' : ''}</span>
-        <span class="result-status">${available ? 'Disponible' : 'Pris'}</span>
-        ${available ? `<button class="result-cta" onclick="${ctaOnclick}">Commander</button>` : ''}
-      `;
-      resultsDiv.appendChild(item);
-    });
-  }, 900);
-}
-}
-
-// Recherche sur Entrée
-document.getElementById('domain-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') searchDomain();
-});
 </script>
 
 </body>
