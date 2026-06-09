@@ -3,7 +3,19 @@
   "domains": [
     { "domain": "monentreprise.africa", "status": "available", "price": null },
     { "domain": "monentreprise.ca", "status": "available", "price": null },
+    { "domain": "monentreprise.com", "status": "available", "price": null },
+    { "domain": "monentreprise.org", "status": "available", "price": null },
+    { "domain": "maboutique.africa", "status": "available", "price": null },
+    { "domain": "maboutique.ca", "status": "available", "price": null },
+    { "domain": "maboutique.com", "status": "available", "price": null },
     { "domain": "commerce.africa", "status": "available", "price": null },
-    { "domain": "export.africa", "status": "available", "price": null }
+    { "domain": "commerce.ca", "status": "available", "price": null },
+    { "domain": "export.africa", "status": "available", "price": null },
+    { "domain": "export.ca", "status": "available", "price": null },
+    { "domain": "import.africa", "status": "available", "price": null },
+    { "domain": "trade.africa", "status": "available", "price": null },
+    { "domain": "afrique.com", "status": "available", "price": null },
+    { "domain": "afrique.ca", "status": "available", "price": null },
+    { "domain": "africa.ca", "status": "available", "price": null }
   ]
 }
