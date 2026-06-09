@@ -286,8 +286,6 @@
 </footer>
 
 <script>
-const GD_KEY    = 'hkTkicP99YYM_AThy42nB26gt3Py4bcZuKb';
-const GD_SECRET = '2quy9w1pujj9KBJv2jhQEk';
 const TLDS = ['com', 'africa', 'ca', 'org', 'net', 'io', 'bj', 'ci', 'sn'];
 
 async function checkDomain() {
@@ -309,14 +307,8 @@ async function checkDomain() {
   const domains = TLDS.map(tld => `${base}.${tld}`);
 
   try {
-    const resp = await fetch(
-      `https://api.godaddy.com/v1/domains/available?domain=${domains.join(',')}&checkType=FAST`,
-      {
-        headers: {
-          'Authorization': `sso-key ${GD_KEY}:${GD_SECRET}`,
-          'Accept': 'application/json'
-        }
-      }
+const resp = await fetch(
+      `https://passerelles-afrique-canada.vercel.app/api/check-domain?domain=${base}`
     );
 
     if (!resp.ok) throw new Error('API error ' + resp.status);
