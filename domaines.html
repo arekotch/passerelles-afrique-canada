@@ -306,16 +306,14 @@ async function checkDomain() {
   // Construire la liste de domaines à vérifier
   const domains = TLDS.map(tld => `${base}.${tld}`);
 
-  try {
-const resp = await fetch(
+try {
+    const resp = await fetch(
       `https://passerelles-afrique-canada.vercel.app/api/check-domain?domain=${base}`
     );
 
     if (!resp.ok) throw new Error('API error ' + resp.status);
     const data = await resp.json();
-
-    // L'API retourne soit un objet unique soit un tableau
-    const items = Array.isArray(data) ? data : (data.domains || [data]);
+    const items = data.domains || [];
 
     results.innerHTML = items.map(item => {
       const available = item.available === true;
@@ -331,6 +329,8 @@ const resp = await fetch(
       </div>`;
     }).join('');
 
+  } catch (err) {
+    results.innerHTML = `<p style="color:red; margin-top:1rem;">Erreur de vérification. Veuillez réessayer.</p>`;
   } catch (err) {
     results.innerHTML = `<p style="color:red; margin-top:1rem;">Erreur de vérification. Veuillez réessayer.</p>`;
   }
