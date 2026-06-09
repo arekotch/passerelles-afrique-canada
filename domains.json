@@ -1,21 +1,325 @@
 {
-  "updated_at": "2026-06-08T00:00:00Z",
+  "updated_at": "2026-06-09T03:41:19Z",
   "domains": [
-    { "domain": "monentreprise.africa", "status": "available", "price": null },
-    { "domain": "monentreprise.ca", "status": "available", "price": null },
-    { "domain": "monentreprise.com", "status": "available", "price": null },
-    { "domain": "monentreprise.org", "status": "available", "price": null },
-    { "domain": "maboutique.africa", "status": "available", "price": null },
-    { "domain": "maboutique.ca", "status": "available", "price": null },
-    { "domain": "maboutique.com", "status": "available", "price": null },
-    { "domain": "commerce.africa", "status": "available", "price": null },
-    { "domain": "commerce.ca", "status": "available", "price": null },
-    { "domain": "export.africa", "status": "available", "price": null },
-    { "domain": "export.ca", "status": "available", "price": null },
-    { "domain": "import.africa", "status": "available", "price": null },
-    { "domain": "trade.africa", "status": "available", "price": null },
-    { "domain": "afrique.com", "status": "available", "price": null },
-    { "domain": "afrique.ca", "status": "available", "price": null },
-    { "domain": "africa.ca", "status": "available", "price": null }
+    {
+      "domain": "monentreprise.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "monentreprise.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "maboutique.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "commerce.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "export.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "import.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "trade.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "afrique.sn",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.africa",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.ca",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.com",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.org",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.io",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.bj",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.ci",
+      "status": "error",
+      "price": null
+    },
+    {
+      "domain": "africa.sn",
+      "status": "error",
+      "price": null
+    }
   ]
 }
