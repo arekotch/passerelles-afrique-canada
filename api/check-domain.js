@@ -5,19 +5,24 @@ export default async function handler(req, res) {
   const { domain } = req.query;
   if (!domain) return res.status(400).json({ error: 'domain requis' });
 
-  const GD_KEY    = 'hkTkicP99YYM_AThy42nB26gt3Py4bcZuKb';
-  const GD_SECRET = '2quy9w1pujj9KBJv2jhQEk';
-
-  const tlds = ['com', 'africa', 'ca', 'org', 'net', 'io', 'bj', 'ci', 'sn'];
-  const domains = tlds.map(t => `${domain}.${t}`).join(',');
+  const API_KEY = 'at_YoDhAD0yJYecVonxb6BfkKxwXqQS1';
+  const TLDS = ['com', 'africa', 'ca', 'org', 'net', 'io', 'bj', 'ci', 'sn'];
 
   try {
-    const resp = await fetch(
-      `https://api.godaddy.com/v1/domains/available?domain=${domains}&checkType=FAST`,
-      { headers: { 'Authorization': `sso-key ${GD_KEY}:${GD_SECRET}` } }
+    const results = await Promise.all(
+      TLDS.map(async tld => {
+        const fullDomain = `${domain}.${tld}`;
+        const resp = await fetch(
+          `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${API_KEY}&domainName=${fullDomain}&credits=DA`
+        );
+        const data = await resp.json();
+        return {
+          domain: fullDomain,
+          available: data.DomainInfo?.domainAvailability === 'AVAILABLE'
+        };
+      })
     );
-    const data = await resp.json();
-    res.status(200).json(data);
+    res.status(200).json({ domains: results });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
