@@ -501,21 +501,92 @@
 </section>
 
 <!-- ── WIDGET RECHERCHE ── -->
-<section class="search-section">
+<section id="domaines" class="search-section">
   <div class="search-inner">
     <h2>Vérifier la disponibilité</h2>
-    <p>Entrez le nom souhaité — nous vérifions les principales extensions disponibles.</p>
+    <p>Entrez le nom souhaité — disponibilité mise à jour toutes les heures.</p>
+
+    <!-- Barre de recherche -->
     <div class="search-bar">
-      <input type="text" id="domain-input" placeholder="monentreprise" autocomplete="off">
-      <button onclick="searchDomain()">🔍 Rechercher</button>
+      <input type="text" id="searchInput" placeholder="monentreprise" autocomplete="off" oninput="filterDomains()">
+      <button onclick="filterDomains()">🔍 Rechercher</button>
     </div>
-    <div id="search-loading">Vérification en cours…</div>
+
+    <!-- Filtres TLD -->
+    <div style="margin:16px 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+      <button class="tld-btn active" onclick="filterTLD('all',this)">Tous</button>
+      <button class="tld-btn" onclick="filterTLD('africa',this)">.africa</button>
+      <button class="tld-btn" onclick="filterTLD('ca',this)">.ca</button>
+      <button class="tld-btn" onclick="filterTLD('com',this)">.com</button>
+      <button class="tld-btn" onclick="filterTLD('org',this)">.org</button>
+      <button class="tld-btn" onclick="filterTLD('io',this)">.io</button>
+      <button class="tld-btn" onclick="filterTLD('bj',this)">.bj</button>
+      <button class="tld-btn" onclick="filterTLD('ci',this)">.ci</button>
+      <button class="tld-btn" onclick="filterTLD('sn',this)">.sn</button>
+    </div>
+
+    <!-- Résultats -->
     <div id="search-results"></div>
-    <div class="api-note">
-      ℹ️ Les résultats sont indicatifs. Nous confirmons la disponibilité réelle sous 24h.
-    </div>
+    <p id="lastUpdate" style="font-size:0.8em; color:#888; margin-top:12px;"></p>
   </div>
 </section>
+
+<script>
+let allDomains = [];
+let activeTLD = 'all';
+
+async function loadDomains() {
+  try {
+    const resp = await fetch('domains.json?v=' + Date.now());
+    const data = await resp.json();
+    allDomains = data.domains;
+    document.getElementById('lastUpdate').textContent =
+      'Dernière mise à jour : ' + new Date(data.updated_at).toLocaleString('fr-CA');
+    renderDomains(allDomains);
+  } catch (e) {
+    document.getElementById('search-results').innerHTML =
+      '<p style="color:red">Impossible de charger les domaines.</p>';
+  }
+}
+
+function renderDomains(domains) {
+  const grid = document.getElementById('search-results');
+  if (domains.length === 0) {
+    grid.innerHTML = '<p style="color:#888">Aucun résultat.</p>';
+    return;
+  }
+  grid.innerHTML = domains.map(d => {
+    const available = d.status === 'available';
+    const badge = available
+      ? '<span style="color:green; font-weight:bold;">✅ Disponible</span>'
+      : '<span style="color:#999;">❌ Pris</span>';
+    const btn = available
+      ? `<a href="https://passerelles.supersite2.myorderbox.com" target="_blank"
+            style="margin-left:12px; font-size:0.85em;">Commander →</a>`
+      : '';
+    return `<div style="padding:8px 0; border-bottom:1px solid #eee;">
+      <strong>${d.domain}</strong> — ${badge}${btn}
+    </div>`;
+  }).join('');
+}
+
+function filterDomains() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = allDomains;
+  if (activeTLD !== 'all') filtered = filtered.filter(d => d.domain.endsWith('.' + activeTLD));
+  if (query) filtered = filtered.filter(d => d.domain.startsWith(query));
+  renderDomains(filtered);
+}
+
+function filterTLD(tld, btn) {
+  activeTLD = tld;
+  document.querySelectorAll('.tld-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterDomains();
+}
+
+loadDomains();
+</script>
 
 <!-- ── CATALOGUE ── -->
 <section class="catalogue-section">
