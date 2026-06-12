@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Passerelles Afrique-Canada — Facilitation commerciale et financière</title>
 <meta name="description" content="La plateforme qui connecte les PME d'Afrique de l'Ouest au marché canadien. Export, import de technologies, et accès au financement.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:title" content="Passerelles Afrique-Canada — Facilitation commerciale et financière">
+<meta property="og:description" content="La plateforme qui connecte les PME d'Afrique de l'Ouest au marché canadien. Export, import de technologies, et accès au financement.">
+<meta property="og:image" content="https://passerelles.africa/assets/logo.png">
+<meta property="og:url" content="https://passerelles.africa/">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -31,7 +37,8 @@ body{font-family:var(--sans);color:var(--text);background:var(--bg);font-size:16
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(250,251,252,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:42px;width:auto;display:block}
 .nav-logo-name{font-family:var(--serif);font-size:18px;color:var(--brand);letter-spacing:-0.3px}
 .nav-logo-sub{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:300}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -180,10 +187,9 @@ footer{background:var(--text);color:rgba(255,255,255,.7);padding:40px 5%;display
   <span data-fr="Plateforme en cours de développement — Certaines fonctionnalités ne sont pas encore disponibles" data-en="Platform under development — Some features are not yet available">Plateforme en cours de développement — Certaines fonctionnalités ne sont pas encore disponibles</span>
 </div>
 <nav>
-  <div class="nav-logo">
-    <span class="nav-logo-name">Passerelles</span>
-    <span class="nav-logo-sub" data-fr="Afrique · Canada" data-en="Africa · Canada">Afrique · Canada</span>
-  </div>
+  <a class="nav-logo" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="Passerelles Afrique-Canada">
+  </a>
   <div class="nav-links">
     <a href="#flux" data-fr="Services" data-en="Services">Services</a>
     <a href="#how" data-fr="Fonctionnement" data-en="How it works">Fonctionnement</a>
