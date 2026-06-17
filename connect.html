@@ -29,9 +29,26 @@
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 38px; width: auto; display: block; background: #fff; padding: 4px 10px; border-radius: 6px; }
-  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
   .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--or-clair); }
+
+  /* Dropdown */
+  .nav-links li { position: relative; }
+  .nav-links li:hover > .dropdown { display: block; }
+  .dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--vert-f); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 0.5rem 0; min-width: 230px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 200;
+  }
+  .dropdown a {
+    display: block; padding: 0.55rem 1.2rem;
+    color: rgba(255,255,255,0.82); font-size: 0.84rem;
+    white-space: nowrap; border-left: 3px solid transparent;
+  }
+  .dropdown a:hover { color: var(--or-clair); border-left-color: var(--or-clair); background: rgba(255,255,255,0.05); }
+  .dropdown-label::after { content: ' ▾'; font-size: 0.7rem; opacity: 0.7; }
 
   .hero {
     background: linear-gradient(135deg, var(--vert-f) 0%, var(--vert) 60%, #2d8f5a 100%);
@@ -162,9 +179,51 @@
 <nav>
   <a class="nav-logo" href="index.html"><img src="assets/P_Connect_New3.png" alt="Passerelles Connect" style="height:60px;"></a>
   <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="connect.html" class="active">Domaines</a></li>
+    <li>
+      <a href="https://digitalservices.passerelles.africa/domain-registration/index.php" class="dropdown-label">Domaines</a>
+      <div class="dropdown">
+        <a href="https://digitalservices.passerelles.africa/domain-registration/index.php">Enregistrer un domaine</a>
+        <a href="https://digitalservices.passerelles.africa/domain-registration/transfer/index.php">Transférer un domaine</a>
+        <a href="https://digitalservices.passerelles.africa/domain-registration/domain-registration-price.php">Tarifs domaines</a>
+        <a href="https://digitalservices.passerelles.africa/new-domain-extensions">Nouvelles extensions</a>
+      </div>
+    </li>
+    <li>
+      <a href="https://digitalservices.passerelles.africa/web-hosting/index.php" class="dropdown-label">Hébergement</a>
+      <div class="dropdown">
+        <a href="https://digitalservices.passerelles.africa/web-hosting/linux-php-hosting.php">Hébergement Linux</a>
+        <a href="https://digitalservices.passerelles.africa/web-hosting/windows-hosting.php">Hébergement Windows</a>
+        <a href="https://digitalservices.passerelles.africa/optimized-wordpress-hosting.php">WordPress Hosting</a>
+        <a href="https://digitalservices.passerelles.africa/cloudhosting.php">Cloud Hosting</a>
+        <a href="https://digitalservices.passerelles.africa/dedicated-servers.php">Serveurs dédiés</a>
+      </div>
+    </li>
+    <li>
+      <a href="https://digitalservices.passerelles.africa/business-email" class="dropdown-label">Email</a>
+      <div class="dropdown">
+        <a href="https://digitalservices.passerelles.africa/business-email">Email Business</a>
+        <a href="https://digitalservices.passerelles.africa/titan-business-email-hosting">Titan Email</a>
+        <a href="https://digitalservices.passerelles.africa/google_apps.php">Google Workspace</a>
+        <a href="https://digitalservices.passerelles.africa/web-hosting/enterprise-email-hosting.php">Email Entreprise</a>
+      </div>
+    </li>
+    <li>
+      <a href="https://digitalservices.passerelles.africa/website-design/do-it-yourself-website-builder.php" class="dropdown-label">Site Web</a>
+      <div class="dropdown">
+        <a href="https://digitalservices.passerelles.africa/website-design/do-it-yourself-website-builder.php">Constructeur de site</a>
+        <a href="https://digitalservices.passerelles.africa/combo-offers">Offres combinées</a>
+        <a href="https://digitalservices.passerelles.africa/digital-certificate">Certificats SSL</a>
+      </div>
+    </li>
+    <li>
+      <a href="https://digitalpartner.passerelles.africa/" class="dropdown-label">Revendeurs</a>
+      <div class="dropdown">
+        <a href="https://digitalpartner.passerelles.africa/reseller.php?action=overview">Programme revendeur</a>
+        <a href="https://digitalpartner.passerelles.africa/reseller.php?action=product&val=prod_catalog">Catalogue produits</a>
+        <a href="https://digitalpartner.passerelles.africa/reseller.php?action=pricing">Tarifs revendeur</a>
+        <a href="https://digitalpartner.passerelles.africa/reseller.php?action=signup">S'inscrire</a>
+      </div>
+    </li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
