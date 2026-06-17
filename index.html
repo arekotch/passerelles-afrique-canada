@@ -475,6 +475,8 @@ footer{background:var(--text);color:rgba(255,255,255,.7);padding:40px 5%;display
 let lang = 'fr';
 
 function toggleLang() {
+  window.location.href = 'index-en.html';
+  return;
   lang = lang === 'fr' ? 'en' : 'fr';
   document.getElementById('lang-btn').textContent = lang === 'fr' ? 'EN' : 'FR';
   document.documentElement.lang = lang;
