@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passerelles Africa-Canada — Commercial and Financial Facilitation</title>
+<meta name="description" content="The platform connecting West African SMEs to the Canadian market. Export, technology import, and access to financing.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:title" content="Passerelles Africa-Canada — Commercial and Financial Facilitation">
+<meta property="og:description" content="The platform connecting West African SMEs to the Canadian market. Export, technology import, and access to financing.">
+<meta property="og:image" content="https://passerelles.africa/assets/logo.png">
+<meta property="og:url" content="https://passerelles.africa/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#1A5C9A;
+  --brand-dark:#0D3D6B;
+  --brand-light:#E8F1FA;
+  --green:#1A6B45;
+  --green-light:#E4F4EC;
+  --amber:#9A6B1A;
+  --amber-light:#FDF3E0;
+  --text:#1A1A2E;
+  --muted:#5A6070;
+  --border:#E2E6ED;
+  --bg:#FAFBFC;
+  --white:#FFFFFF;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,251,252,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:42px;width:auto;display:block}
+.nav-logo-name{font-family:var(--serif);font-size:18px;color:var(--brand);letter-spacing:-0.3px}
+.nav-logo-sub{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:300}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:400;letter-spacing:0.1px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-lang{font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:4px;cursor:pointer;background:transparent;color:var(--muted);font-family:var(--sans);letter-spacing:1px;transition:all .2s}
+.nav-lang:hover{border-color:var(--brand);color:var(--brand)}
+.nav-cta{font-size:13px;padding:8px 18px;background:#D85A30;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:var(--sans);font-weight:400;transition:background .2s}
+.nav-cta:hover{background:var(--brand-dark)}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--text)}
+
+/* HERO */
+.hero{padding:100px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;border-bottom:1px solid var(--border)}
+.hero-left{}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);background:var(--brand-light);padding:5px 12px;border-radius:4px;margin-bottom:24px;font-weight:500}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand);display:inline-block}
+.hero h1{font-family:var(--serif);font-size:44px;line-height:1.15;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px}
+.hero h1 em{font-style:italic;color:var(--brand)}
+.hero-desc{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:32px;font-weight:300;max-width:440px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{padding:12px 24px;background:#D85A30;color:#fff;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-family:var(--sans);transition:background .2s}
+.btn-p:hover{background:var(--brand-dark)}
+.btn-s{padding:12px 24px;background:transparent;color:var(--brand);border:1.5px solid var(--brand);border-radius:6px;font-size:14px;cursor:pointer;font-family:var(--sans);transition:all .2s}
+.btn-s:hover{background:var(--brand-light)}
+.hero-right{}
+.hero-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.hero-card-title{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:500}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px}
+.stat-val{font-family:var(--serif);font-size:28px;color:var(--brand);line-height:1}
+.stat-lab{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+.stat-box.green .stat-val{color:var(--green)}
+.stat-box.amber .stat-val{color:var(--amber)}
+.hero-corridor{display:flex;align-items:center;gap:10px;padding:14px;background:var(--brand-light);border-radius:8px}
+.corridor-dot{width:8px;height:8px;border-radius:50%;background:var(--brand);flex-shrink:0}
+.corridor-line{flex:1;height:1px;background:var(--brand);opacity:.3}
+.corridor-text{font-size:12px;color:var(--brand);font-weight:500}
+
+/* FLUX */
+.flux{padding:80px 5%;border-bottom:1px solid var(--border)}
+.section-head{margin-bottom:40px}
+.section-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brand);font-weight:500;margin-bottom:10px}
+.section-title{font-family:var(--serif);font-size:32px;color:var(--text);line-height:1.2;margin-bottom:10px}
+.section-sub{font-size:15px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7}
+.flux-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.flux-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.flux-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.flux-card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.flux-card:hover::before{transform:scaleX(1)}
+.flux-num{font-family:var(--serif);font-size:40px;color:var(--border);line-height:1;margin-bottom:12px;font-style:italic}
+.flux-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:8px}
+.flux-desc{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.flux-badge{display:inline-block;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-top:12px;font-weight:500}
+.flux-badge.blue{background:var(--brand-light);color:var(--brand)}
+.flux-badge.green{background:var(--green-light);color:var(--green)}
+.flux-badge.amber{background:var(--amber-light);color:var(--amber)}
+
+/* HOW IT WORKS */
+.how{padding:80px 5%;background:var(--white);border-bottom:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:40px;position:relative}
+.steps::before{content:'';position:absolute;top:24px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1px;background:var(--border);z-index:0}
+.step{padding:0 16px;position:relative;z-index:1}
+.step-circle{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--brand);background:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:var(--serif);font-size:18px;color:var(--brand)}
+.step-title{font-size:14px;font-weight:500;text-align:center;margin-bottom:8px;color:var(--text)}
+.step-desc{font-size:12px;color:var(--muted);text-align:center;line-height:1.6;font-weight:300}
+
+/* WHY */
+.why{padding:80px 5%;border-bottom:1px solid var(--border)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px}
+.why-card{padding:24px;border:1px solid var(--border);border-radius:10px;background:var(--white);transition:border-color .2s}
+.why-card:hover{border-color:var(--brand)}
+.why-icon{font-size:20px;color:var(--brand);margin-bottom:12px;display:block}
+.why-title{font-size:14px;font-weight:500;margin-bottom:8px;color:var(--text)}
+.why-desc{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.partners{margin-top:36px;padding-top:28px;border-top:1px solid var(--border)}
+.partners-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:500}
+.partner-tags{display:flex;flex-wrap:wrap;gap:8px}
+.ptag{font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:4px;color:var(--muted);background:var(--white);letter-spacing:.3px}
+
+/* CONTACT */
+.contact{padding:80px 5%;background:var(--white)}
+.contact-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contact-left{}
+.contact-info{margin-top:28px;display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;gap:12px;align-items:flex-start}
+.contact-item-icon{width:36px;height:36px;border-radius:8px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--brand)}
+.contact-item-text{font-size:13px;color:var(--muted);line-height:1.5;font-weight:300}
+.contact-item-text strong{color:var(--text);font-weight:500;display:block;font-size:13px;margin-bottom:2px}
+.contact-form{}
+.form-row{margin-bottom:14px}
+.form-label{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;font-weight:500}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);color:var(--text);font-family:var(--sans);transition:border-color .2s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--brand)}
+.form-textarea{min-height:100px;resize:vertical}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;padding:12px;background:#D85A30;color:#fff;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-family:var(--sans);margin-top:6px;transition:background .2s}
+.form-submit:hover{background:var(--brand-dark)}
+.form-note{font-size:11px;color:var(--muted);text-align:center;margin-top:8px;font-weight:300}
+.success-msg{display:none;text-align:center;padding:24px;color:var(--green)}
+.success-icon{font-size:40px;display:block;margin-bottom:8px}
+.success-text{font-size:15px;font-weight:500}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.7);padding:40px 5%;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+.footer-brand-name{font-family:var(--serif);font-size:18px;color:#fff;margin-bottom:6px}
+.footer-brand-sub{font-size:11px;letter-spacing:1px;opacity:.5;text-transform:uppercase;margin-bottom:16px}
+.footer-brand-desc{font-size:12px;line-height:1.6;font-weight:300;max-width:260px}
+.footer-col-title{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:14px;font-weight:500}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;cursor:pointer;transition:color .2s;font-weight:300}
+.footer-links a:hover{color:#fff}
+.footer-bottom{background:rgba(0,0,0,.2);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.4)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left{animation:fadeUp .6s ease forwards}
+.hero-right{animation:fadeUp .6s .15s ease both}
+.flux-card{animation:fadeUp .5s ease both}
+.flux-card:nth-child(1){animation-delay:.1s}
+.flux-card:nth-child(2){animation-delay:.2s}
+.flux-card:nth-child(3){animation-delay:.3s}
+.flux-card:nth-child(4){animation-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding:60px 5% 40px;gap:32px}
+  .hero h1{font-size:32px}
+  .hero-right{display:none}
+  .contact-inner{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .steps{grid-template-columns:1fr}
+  .step{padding:16px 0;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+  .step:last-child{border-bottom:none}
+  .step-circle{margin:0;flex-shrink:0;width:40px;height:40px}
+  .step-title,.step-desc{text-align:left}
+  .nav-links{display:none}
+  .nav-mobile-toggle{display:block}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div style="background:#D85A30;color:#fff;text-align:center;padding:8px 16px;font-size:12px;letter-spacing:0.8px;font-family:var(--sans);font-weight:400">
+  <span data-fr="Platform under development — Some features are not yet available" data-en="Platform under development — Some features are not yet available">Platform under development — Some features are not yet available</span>
+</div>
+<nav>
+  <a class="nav-logo" href="index-en.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="Passerelles Afrique-Canada">
+  </a>
+  <div class="nav-links">
+    <a href="#flux" data-fr="Services" data-en="Services">Services</a>
+    <a href="#how" data-fr="Fonctionnement" data-en="How it works">How it works</a>
+    <a href="#why" data-fr="Pourquoi nous" data-en="Why us">Why us</a>
+    <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+    <a href="connect-en.html" data-fr="Domaines" data-en="Domains">Domains</a>
+    <button class="nav-lang" id="lang-btn" onclick="toggleLang()" title="Switch to French">FR</button>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-fr="Rejoindre" data-en="Join us">Join us</button>
+  </div>
+  <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag" data-fr="Corridor Afrique de l'Ouest · Canada" data-en="West Africa · Canada Corridor">West Africa · Canada Corridor</div>
+    <h1 data-fr="The bridge between <em>West Africa</em> and Canada" data-en="The bridge between <em>West Africa</em> and Canada">The bridge between <em>West Africa</em> and Canada</h1>
+    <p class="hero-desc" data-fr="Export of West African products to Canada, import of Canadian technologies, and progressive access to financing for unbanked SMEs." data-en="Export of West African products to Canada, import of Canadian technologies, and progressive access to financing for unbanked SMEs.">Export of West African products to Canada, import of Canadian technologies, and progressive access to financing for unbanked SMEs.</p>
+    <div class="hero-btns">
+      <button class="btn-p" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-fr="Démarrer maintenant" data-en="Get started">Get started</button>
+      <button class="btn-s" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" data-fr="Découvrir" data-en="Learn more">Learn more</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-title" data-fr="Le corridor en chiffres" data-en="The corridor in numbers">The corridor in numbers</div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-val">0 %</div>
+          <div class="stat-lab" data-fr="Droits de douane vers le Canada (TPMD)" data-en="Tariffs to Canada (LDCT)">Tariffs to Canada (LDCT)</div>
+        </div>
+        <div class="stat-box green">
+          <div class="stat-val">8,6</div>
+          <div class="stat-lab" data-fr="Mds CAD — marché remittances Canada" data-en="B CAD — Canada remittance market">B CAD — Canada remittance market</div>
+        </div>
+        <div class="stat-box amber">
+          <div class="stat-val">70 %</div>
+          <div class="stat-lab" data-fr="PME AOF sans accès au crédit formel" data-en="West African SMEs without formal credit">West African SMEs without formal credit</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">+109%</div>
+          <div class="stat-lab" data-fr="Croissance imports Canada-Afrique (2019-2024)" data-en="Growth in Canada-Africa imports (2019-2024)">Growth in Canada-Africa imports (2019-2024)</div>
+        </div>
+      </div>
+      <div class="hero-corridor">
+        <div class="corridor-dot"></div>
+        <span class="corridor-text">Abidjan</span>
+        <div class="corridor-line"></div>
+        <span class="corridor-text">Cotonou</span>
+        <div class="corridor-line"></div>
+        <span class="corridor-text">Montréal</span>
+        <div class="corridor-dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLUX -->
+<section class="flux" id="flux">
+  <div class="section-head">
+    <div class="section-eyebrow" data-fr="Nos services" data-en="Our services">Our services</div>
+    <div class="section-title" data-fr="Trois flux, une infrastructure" data-en="Three flows, one infrastructure">Three flows, one infrastructure</div>
+    <div class="section-sub" data-fr="Passerelles facilitates two-way trade along the Canada–UEMOA corridor, with integrated secure payment and logistics tracking." data-en="Passerelles facilitates two-way trade along the Canada–UEMOA corridor, with integrated secure payment and logistics tracking.">Passerelles facilitates two-way trade along the Canada–UEMOA corridor, with integrated secure payment and logistics tracking.</div>
+  </div>
+  <div class="flux-grid">
+    <div class="flux-card">
+      <div class="flux-num">01</div>
+      <div class="flux-title" data-fr="Export AOF → Canada" data-en="AOF export → Canada">AOF export → Canada</div>
+      <div class="flux-desc" data-fr="Cajou, karité, cacao transformé, café de spécialité — accès direct aux acheteurs canadiens avec zéro droit de douane grâce au TPMD." data-en="Cashew, shea, processed cocoa, specialty coffee — direct access to Canadian buyers with zero tariffs under LDCT.">Cashew, shea, processed cocoa, specialty coffee — direct access to Canadian buyers with zero tariffs under LDCT.</div>
+      <span class="flux-badge blue" data-fr="0 % de droits TPMD" data-en="0% LDCT tariffs">0% LDCT tariffs</span>
+    </div>
+    <div class="flux-card">
+      <div class="flux-num">02</div>
+      <div class="flux-title" data-fr="Tech canadienne → AOF" data-en="Canadian tech → AOF">Canadian tech → AOF</div>
+      <div class="flux-desc" data-fr="Edtech francophone, agritech, solutions de santé digitale — mise en relation avec les PME béninoises et ivoiriennes en demande de modernisation." data-en="Francophone edtech, agritech, digital health — connecting with Beninese and Ivorian SMEs seeking modernization.">Francophone edtech, agritech, digital health — connecting with Beninese and Ivorian SMEs seeking modernization.</div>
+      <span class="flux-badge green" data-fr="Technologie & innovation" data-en="Technology & innovation">Technology & innovation</span>
+    </div>
+    <div class="flux-card">
+      <div class="flux-num">03</div>
+      <div class="flux-title" data-fr="Accès au financement" data-en="Access to financing">Access to financing</div>
+      <div class="flux-desc" data-fr="Chaque transaction sur la plateforme construit votre profil financier. Après 6 mois d'activité, accès au crédit via nos IMF partenaires en zone UEMOA." data-en="Each platform transaction builds your financial profile. After 6 months of activity, access credit via our UEMOA partner MFIs.">Each platform transaction builds your financial profile. Access credit via our UEMOA partner MFIs after 6 months.</div>
+      <span class="flux-badge amber" data-fr="Pour les non-bancarisés" data-en="For the unbanked">For the unbanked</span>
+    </div>
+    <div class="flux-card">
+      <div class="flux-num">04</div>
+      <div class="flux-title" data-fr="Paiement escrow sécurisé" data-en="Secure escrow payment">Secure escrow payment</div>
+      <div class="flux-desc" data-fr="Fonds bloqués jusqu'à confirmation de livraison. Wave, Orange Money et MTN côté AOF. Interac côté Canada. Conversion CAD↔FCFA automatique." data-en="Funds held until delivery confirmed. Wave, Orange Money and MTN on the AOF side. Interac on the Canada side. Automatic CAD↔FCFA conversion.">Funds held until delivery confirmed. Wave, Orange Money and MTN on the AOF side. Interac on the Canada side. Automatic CAD↔FCFA conversion.</div>
+      <span class="flux-badge blue" data-fr="Zéro risque de non-paiement" data-en="Zero non-payment risk">Zero non-payment risk</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-head">
+    <div class="section-eyebrow" data-fr="Processus" data-en="Process">Process</div>
+    <div class="section-title" data-fr="Comment ça marche" data-en="How it works">How it works</div>
+    <div class="section-sub" data-fr="From registration to delivery in four simple steps." data-en="From registration to delivery in four simple steps.">From registration to delivery in four simple steps.</div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <div class="step-title" data-fr="Inscription & KYC" data-en="Registration & KYC">Registration & KYC</div>
+      <div class="step-desc" data-fr="Create your account in 5 minutes. Automated identity verification from CI, Benin or Canada." data-en="Create your account in 5 minutes. Automated identity verification from CI, Benin or Canada.">Create your account in 5 minutes. Automated identity verification from CI, Benin or Canada.</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <div class="step-title" data-fr="Matching & contrat" data-en="Matching & contract">Matching & contract</div>
+      <div class="step-desc" data-fr="Trouvez votre acheteur ou fournisseur. Contrat commercial signé électroniquement sur la plateforme." data-en="Find your buyer or supplier. Commercial contract signed electronically on the platform.">Find your buyer or supplier. Commercial contract signed electronically on the platform.</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div class="step-title" data-fr="Paiement & expédition" data-en="Payment & shipment">Payment & shipment</div>
+      <div class="step-desc" data-fr="L'acheteur verse les fonds en escrow. Le vendeur expédie après inspection qualité tierce (SGS/Bureau Veritas)." data-en="The buyer deposits funds in escrow. The seller ships after third-party quality inspection (SGS/Bureau Veritas).">The buyer deposits funds in escrow. The seller ships after third-party quality inspection (SGS/Bureau Veritas).</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <div class="step-title" data-fr="Livraison & déblocage" data-en="Delivery & release">Delivery & release</div>
+      <div class="step-desc" data-fr="À la livraison confirmée, les fonds sont convertis et transférés — FCFA sur mobile money ou CAD par Interac." data-en="Upon confirmed delivery, funds are converted and transferred — FCFA via mobile money or CAD via Interac.">Upon confirmed delivery, funds are converted and transferred — FCFA via mobile money or CAD via Interac.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="section-head">
+    <div class="section-eyebrow" data-fr="Notre différence" data-en="Our difference">Our difference</div>
+    <div class="section-title" data-fr="Pourquoi Passerelles ?" data-en="Why Passerelles?">Why Passerelles?</div>
+    <div class="section-sub" data-fr="The only bilingual platform specialized on the Canada–UEMOA corridor, with integrated mobile money and progressive access to financing." data-en="The only bilingual platform specialized on the Canada–UEMOA corridor, with integrated mobile money and progressive access to financing.">The only bilingual platform specialized on the Canada–UEMOA corridor, with integrated mobile money and progressive access to financing.</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🌍</span>
+      <div class="why-title" data-fr="Bilingue FR/EN natif" data-en="Native FR/EN bilingual">Native FR/EN bilingual</div>
+      <div class="why-desc" data-fr="Conçu pour la zone UEMOA francophone et le Canada anglophone. Aucun concurrent ne couvre ce corridor en français." data-en="Designed for the francophone UEMOA zone and anglophone Canada. No competitor covers this corridor in French.">Designed for the francophone UEMOA zone and anglophone Canada. No competitor covers this corridor in French.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">📱</span>
+      <div class="why-title" data-fr="Mobile money intégré" data-en="Integrated mobile money">Integrated mobile money</div>
+      <div class="why-desc" data-fr="Wave, Orange Money, MTN MoMo — les vrais rails de paiement des PME AOF. Pas besoin de compte bancaire." data-en="Wave, Orange Money, MTN MoMo — the real payment rails for West African SMEs. No bank account needed.">Wave, Orange Money, MTN MoMo — the real payment rails for West African SMEs. No bank account needed.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🔒</span>
+      <div class="why-title" data-fr="Escrow sécurisé" data-en="Secure escrow">Secure escrow</div>
+      <div class="why-desc" data-fr="Fonds libérés uniquement à la livraison confirmée. Inspection tierce obligatoire. Zéro risque de fraude fournisseur." data-en="Funds released only upon confirmed delivery. Mandatory third-party inspection. Zero supplier fraud risk.">Funds released only upon confirmed delivery. Mandatory third-party inspection. Zero supplier fraud risk.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">📈</span>
+      <div class="why-title" data-fr="Accès progressif au crédit" data-en="Progressive credit access">Progressive credit access</div>
+      <div class="why-desc" data-fr="6 mois de transactions = un profil financier réel. Accès au crédit via nos IMF partenaires en zone UEMOA." data-en="6 months of transactions = a real financial profile. Credit access via our UEMOA partner MFIs.">6 months of transactions = a real financial profile. Credit access via our UEMOA partner MFIs.</div>
+    </div>
+  </div>
+  <div class="partners">
+    <div class="partners-label" data-fr="Partenaires & cadre institutionnel" data-en="Partners & institutional framework">Partners & institutional framework</div>
+    <div class="partner-tags">
+      <span class="ptag">FinDev Canada</span>
+      <span class="ptag">BCEAO / UEMOA</span>
+      <span class="ptag">BOAD</span>
+      <span class="ptag" data-fr="Délégué commercial Canada" data-en="Canadian Trade Commissioner">Canadian Trade Commissioner</span>
+      <span class="ptag">FINTRAC</span>
+      <span class="ptag">LemFi Business</span>
+      <span class="ptag">Fincra</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-eyebrow" data-fr="Nous rejoindre" data-en="Join us">Join us</div>
+      <div class="section-title" data-fr="Parlons de votre projet" data-en="Let's talk about your project">Let's talk about your project</div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">🌍</div>
+          <div class="contact-item-text">
+            <strong data-fr="Afrique de l'Ouest" data-en="West Africa">West Africa</strong>
+            <span data-fr="Abidjan, Côte d'Ivoire · Cotonou, Bénin" data-en="Abidjan, Côte d'Ivoire · Cotonou, Benin">Abidjan, Côte d'Ivoire · Cotonou, Benin</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🍁</div>
+          <div class="contact-item-text">
+            <strong>Canada</strong>
+            <span>Montréal, Québec</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>contact@passerelles.africa</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <div class="contact-item-text">
+            <strong>WhatsApp Business</strong>
+            <span data-fr="Disponible en FR/EN" data-en="Available in FR/EN">Available in FR/EN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form id="form-fields" action="https://formspree.io/f/xjgdyggy" method="POST">
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label class="form-label" data-fr="Prénom" data-en="First name">First name</label>
+            <input class="form-input" type="text" id="f-prenom" name="prenom" placeholder="Kouamé">
+          </div>
+          <div class="form-row">
+            <label class="form-label" data-fr="Nom" data-en="Last name">Last name</label>
+            <input class="form-input" type="text" id="f-nom" name="nom" placeholder="Yao">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" id="f-email" name="email" placeholder="vous@entreprise.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" data-fr="Organisation" data-en="Organization">Organization</label>
+          <input class="form-input" type="text" id="f-org" name="organisation" placeholder="Nom de votre entreprise">
+        </div>
+        <div class="form-row">
+          <label class="form-label" data-fr="Vous êtes..." data-en="You are...">You are...</label>
+          <select class="form-select" id="f-type" name="profil">
+            <option value="" data-fr="Sélectionner votre profil" data-en="Select your profile">Select your profile</option>
+            <option value="exp" data-fr="PME exportatrice AOF (cajou, karité, cacao...)" data-en="West African exporting SME (cashew, shea, cocoa...)">West African exporting SME</option>
+            <option value="imp" data-fr="PME importatrice AOF (technologies canadiennes)" data-en="West African importing SME (Canadian technologies)">West African importing SME</option>
+            <option value="ca" data-fr="Acheteur ou entreprise canadienne" data-en="Canadian buyer or company">Canadian buyer or company</option>
+            <option value="dias" data-fr="Diaspora AOF au Canada" data-en="West African diaspora in Canada">West African diaspora in Canada</option>
+            <option value="inst" data-fr="Partenaire institutionnel (IMF, bailleur, régulateur)" data-en="Institutional partner (MFI, funder, regulator)">Institutional partner</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" data-fr="Message" data-en="Message">Message</label>
+          <textarea class="form-textarea" id="f-msg" name="message" placeholder="Briefly describe your need or product..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()" data-fr="Envoyer ma demande →" data-en="Send my request →">Send my request →</button>
+        <div class="form-note" data-fr="Réponse sous 48h · Données protégées · Aucun spam" data-en="Response within 48h · Protected data · No spam">Response within 48h · Protected data · No spam</div>
+      </form>
+      <div class="success-msg" id="success-msg">
+        <span class="success-icon">✓</span>
+        <div class="success-text" data-fr="Demande envoyée avec succès !" data-en="Request sent successfully!">Request sent successfully!</div>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:300" data-fr="Nous vous répondons sous 48 heures." data-en="We will reply within 48 hours.">We will reply within 48 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand-name">Passerelles</div>
+    <div class="footer-brand-sub" data-fr="Afrique · Canada" data-en="Africa · Canada">Africa · Canada</div>
+    <div class="footer-brand-desc" data-fr="Commercial and financial facilitation platform on the francophone West Africa – Canada corridor." data-en="Commercial and financial facilitation platform on the francophone West Africa – Canada corridor.">Commercial and financial facilitation platform on the francophone West Africa – Canada corridor.</div>
+  </div>
+  <div>
+    <div class="footer-col-title" data-fr="Navigation" data-en="Navigation">Navigation</div>
+    <div class="footer-links">
+      <a href="#flux" data-fr="Services" data-en="Services">Services</a>
+      <a href="#how" data-fr="Fonctionnement" data-en="How it works">How it works</a>
+      <a href="#why" data-fr="Pourquoi nous" data-en="Why us">Why us</a>
+      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title" data-fr="Présence" data-en="Presence">Presence</div>
+    <div class="footer-links">
+      <a>Abidjan, Côte d'Ivoire</a>
+      <a>Cotonou, Bénin</a>
+      <a>Montréal, Canada</a>
+      <a>contact@passerelles.africa</a>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Passerelles Afrique-Canada</span>
+  <span data-fr="Tous droits réservés" data-en="All rights reserved">All rights reserved</span>
+</div>
+
+<script>
+let lang = 'en';
+
+function toggleLang() {
+  window.location.href = 'index.html';
+  return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    const txt = el.getAttribute('data-' + lang);
+    if (!txt) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = txt;
+    } else if (el.tagName === 'OPTION') {
+      el.textContent = txt;
+    } else if (el.tagName === 'H1') {
+      el.innerHTML = txt;
+    } else {
+      el.textContent = txt;
+    }
+  });
+}
+
+function toggleMobileMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:20px 5%;gap:16px;z-index:99';
+  }
+}
+
+async function submitForm() {
+  const email = document.getElementById('f-email').value.trim();
+  const type = document.getElementById('f-type').value;
+  if (!email || !type) {
+    alert(lang === 'fr'
+      ? 'Please fill in at least your email and profile.'
+      : 'Please fill in at least your email and profile.');
+    return;
+  }
+  const form = document.getElementById('form-fields');
+  const formData = new FormData(form);
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xjgdyggy', {
+      method: 'POST',
+      body: formData,
+      headers: {'Accept': 'application/json'}
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      const json = await res.json();
+      console.error('Formspree:', json);
+      throw new Error();
+    }
+  } catch(e) {
+    btn.textContent = 'Error — try again';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
